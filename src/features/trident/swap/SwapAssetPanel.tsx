@@ -65,44 +65,56 @@ const SwapAssetPanel: FC<SwapAssetPanel> = forwardRef<HTMLInputElement, SwapAsse
         className={classNames(
           disabled ? 'pointer-events-none opacity-40' : '',
           error ? 'border-red-800 hover:border-red-500' : 'border-0 hover:border-dark-600',
-          'rounded-[14px] border  p-3 flex flex-col gap-4'
+          'rounded-[14px] border  p-3 flex flex-col gap-0'
         )}
       >
-        {header({
-          disabled,
-          onChange,
-          value,
-          currency,
-          currencies,
-          onSelect,
-          walletToggle,
-          spendFromWallet,
-        })}
-        {!hideInput && (
-          <div className="flex gap-1 justify-between items-baseline px-1.5">
-            <InputPanel
-              {...{
-                ref,
-                selected,
-                error,
-                currency,
-                currencies,
-                value,
-                onChange,
-                inputDisabled,
-                onSelect,
-                priceImpact,
-                priceImpactCss,
-                spendFromWallet,
-              }}
-            />
-            {balancePanel ? (
-              balancePanel({ disabled, currency, onChange, spendFromWallet })
-            ) : (
-              <BalancePanel {...{ disabled, currency, onChange, spendFromWallet }} />
-            )}
-          </div>
-        )}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row-reverse',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
+          {header({
+            disabled,
+            onChange,
+            value,
+            currency,
+            currencies,
+            onSelect,
+            walletToggle,
+            spendFromWallet,
+          })}
+          {!hideInput && (
+            <div
+              className="flex gap-1 justify-between items-baseline px-1.5"
+              style={{ flexDirection: 'column', width: '64%' }}
+            >
+              <InputPanel
+                {...{
+                  ref,
+                  selected,
+                  error,
+                  currency,
+                  currencies,
+                  value,
+                  onChange,
+                  inputDisabled,
+                  onSelect,
+                  priceImpact,
+                  priceImpactCss,
+                  spendFromWallet,
+                }}
+              />
+              {balancePanel ? (
+                balancePanel({ disabled, currency, onChange, spendFromWallet })
+              ) : (
+                <BalancePanel {...{ disabled, currency, onChange, spendFromWallet }} />
+              )}
+            </div>
+          )}
+        </div>
       </div>
     )
   }
@@ -241,7 +253,11 @@ const SwapAssetPanelHeader: FC<
     <div
       id={id}
       className={classNames(
-        hideSearchModal ? '' : 'bg-dark-800 hover:bg-dark-700 cursor-pointer',
+        currency
+          ? 'bg-none'
+          : hideSearchModal
+          ? ''
+          : 'bg-gradient-to-r from-yellow-500 to-pink-600  hover:bg-dark-700 cursor-pointer',
         'flex items-center gap-2 px-2 py-1 rounded-full shadow-md text-high-emphesis'
       )}
     >

@@ -10,7 +10,7 @@ import { BadgeCheckIcon, ChevronDoubleRightIcon, EmojiHappyIcon } from '@heroico
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import ExternalLink from 'app/components/ExternalLink'
-import Loader from 'app/components/Loader'
+import { RingLoader } from 'react-spinners'
 import QuestionHelper from 'app/components/QuestionHelper'
 import Typography from 'app/components/Typography'
 import { PrivateTxState } from 'app/entities/SushiGuard'
@@ -74,7 +74,7 @@ const PrivateTransaction: FC<PrivateTransaction> = ({ tx }) => {
                     )}
                   >
                     {pending ? (
-                      <Loader />
+                      <RingLoader color="pink" size={150} />
                     ) : success ? (
                       <CheckCircleIcon width={16} height={16} />
                     ) : cancelled ? (

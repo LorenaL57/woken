@@ -1,4 +1,5 @@
 import Davatar from '@davatar/react'
+import { LightBulbIcon } from '@heroicons/react/solid'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { NetworkContextName } from 'app/constants'
@@ -12,8 +13,7 @@ import { TransactionDetails } from 'app/state/transactions/reducer'
 import Image from 'next/image'
 import React, { useMemo } from 'react'
 import { useWeb3React } from 'web3-react-core'
-
-import Loader from '../Loader'
+import { RingLoader } from 'react-spinners'
 import Typography from '../Typography'
 import Web3Connect from '../Web3Connect'
 
@@ -53,14 +53,14 @@ function Web3StatusInner() {
             <div>
               {pending?.length} {i18n._(t`Pending`)}
             </div>{' '}
-            <Loader stroke="white" />
+            <RingLoader color="pink" size={150} />
           </div>
         ) : (
           <div className="relative flex items-center gap-2 cursor-pointer pointer-events-auto">
             <Typography
               weight={700}
               variant="sm"
-              className="px-2 py-5 font-bold rounded-full text-inherit hover:text-white"
+              className="px-2 py-5 font-bold rounded-full text-inherit hover:text-white web3button"
             >
               {ENSName ? ENSName.toUpperCase() : shortenAddress(account)}
             </Typography>
@@ -70,7 +70,7 @@ function Web3StatusInner() {
               address={account}
               defaultComponent={
                 <Image
-                  src="https://app.sushi.com/images/chef.svg"
+                  src="https://img.favpng.com/18/23/24/computer-icons-user-profile-portable-network-graphics-vector-graphics-png-favpng-31THvNXgnrmpMkkCSfpupKPpH.jpg"
                   alt="Sushi Chef"
                   width={24}
                   height={24}

@@ -3,7 +3,7 @@ import { useLingui } from '@lingui/react'
 import { Currency, CurrencyAmount, ZERO } from '@sushiswap/core-sdk'
 import Chip from 'app/components/Chip'
 import { CurrencyLogo } from 'app/components/CurrencyLogo'
-import Loader from 'app/components/Loader'
+import { RingLoader } from 'react-spinners'
 import { MouseoverTooltip } from 'app/components/Tooltip'
 import Typography from 'app/components/Typography'
 import { classNames } from 'app/functions'
@@ -105,7 +105,9 @@ const CurrencyRow: FC<CurrencyRow> = ({ currency, style }) => {
           </div>
           <TokenTags currency={currency} />
         </div>
-        <div className="flex items-center">{balance ? <Balance balance={balance} /> : account ? <Loader /> : null}</div>
+        <div className="flex items-center">
+          {balance ? <Balance balance={balance} /> : account ? <RingLoader color="pink" size={150} /> : null}
+        </div>
       </div>
     </div>
   )

@@ -30,7 +30,7 @@ const Mobile: FC = () => {
           </div>
           <div className="flex items-center w-6">
             <Link href="/swap" passHref={true}>
-              <Image src={logo} alt="woken logo" style={{ scale: 0.4 }} />
+              <Image src={'https://i.imgur.com/gy3EGsY.png'} alt="woken logo" />
             </Link>
           </div>
           <div className="flex items-center">{<Web3Network />}</div>

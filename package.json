@@ -250,5 +250,8 @@
     "budget": 3584000,
     "budgetPercentIncreaseRed": 40,
     "showDetails": true
+  },
+  "dependencies": {
+    "react-spinners": "^0.13.6"
   }
 }

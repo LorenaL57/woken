@@ -9,7 +9,7 @@ import Container from 'app/components/Container'
 import Dots from 'app/components/Dots'
 import DoubleGlowShadow from 'app/components/DoubleGlowShadow'
 import ExternalLink from 'app/components/ExternalLink'
-import Loader from 'app/components/Loader'
+import { RingLoader } from 'react-spinners'
 import QuestionHelper from 'app/components/QuestionHelper'
 import { Fraction } from 'app/entities'
 import { Feature } from 'app/enums/Feature'
@@ -268,14 +268,7 @@ const ProtocolVesting = () => {
               <> {claimConfirmed ? i18n._(t`Claimed`) : i18n._(t`Claim SUSHI`)}</>
             )}
 
-            {attempting && (
-              <Loader
-                stroke="white"
-                style={{
-                  marginLeft: '10px',
-                }}
-              />
-            )}
+            {attempting && <RingLoader color="pink" size={150} />}
           </Button>
         </div>
       </div>
@@ -403,14 +396,7 @@ const WeeklyVesting = () => {
               <> {claimConfirmed ? i18n._(t`Claimed`) : i18n._(t`Claim SUSHI`)}</>
             )}
 
-            {attempting && (
-              <Loader
-                stroke="white"
-                style={{
-                  marginLeft: '10px',
-                }}
-              />
-            )}
+            {attempting && <RingLoader color="pink" size={150} />}
           </Button>
         </div>
       </div>

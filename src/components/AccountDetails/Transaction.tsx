@@ -1,7 +1,7 @@
 import { CheckCircleIcon, ExclamationIcon, XCircleIcon } from '@heroicons/react/outline'
 import PrivateTransaction from 'app/components/AccountDetails/PrivateTransaction'
 import ExternalLink from 'app/components/ExternalLink'
-import Loader from 'app/components/Loader'
+import { RingLoader } from 'react-spinners'
 import Typography from 'app/components/Typography'
 import { PrivateTxState } from 'app/entities/SushiGuard'
 import { classNames, getExplorerLink } from 'app/functions'
@@ -49,7 +49,7 @@ const Transaction: FC<{ hash: string }> = ({ hash }) => {
             )}
           >
             {pending ? (
-              <Loader />
+              <RingLoader color="pink" size={150} />
             ) : success ? (
               <CheckCircleIcon width={16} height={16} />
             ) : cancelled ? (

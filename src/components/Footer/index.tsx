@@ -9,7 +9,6 @@ import { useActiveWeb3React } from 'app/services/web3'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import logo from './logo.png'
 
 import Container from '../Container'
 
@@ -23,9 +22,7 @@ const Footer = () => {
         <div className="grid grid-cols-2 gap-10 pt-8 border-t md:grid-cols-3 lg:grid-cols-6 xs:px-6 border-dark-900">
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-start gap-2">
-              <div className="">
-              <Image src={logo} alt="woken logo" style={{scale: 0.4}}/>
-              </div>
+              <div className=""></div>
               <Typography variant="h2" weight={700} className="tracking-[0.02em] scale-y-90 hover:text-high-emphesis">
                 Sushi
               </Typography>

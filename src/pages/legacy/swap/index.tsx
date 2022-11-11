@@ -376,8 +376,9 @@ const Swap = ({ banners }: SwapProps) => {
             onChange={handleTypeInput}
             onSelect={handleInputSelect}
           />
-          <div className="z-0 flex justify-center -mt-6 -mb-6">
+          <div className="z-0 flex justify-end -mt-6 -mb-6">
             <div
+              style={{ marginRight: '3rem' }}
               role="button"
               className="p-1.5 rounded-full bg-dark-800 border shadow-md border-dark-700 hover:border-dark-600"
               onClick={() => {

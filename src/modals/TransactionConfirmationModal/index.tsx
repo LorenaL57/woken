@@ -5,7 +5,7 @@ import loadingRollingCircle from 'app/animation/loading-rolling-circle.json'
 import receiptPrinting from 'app/animation/receipt-printing.json'
 import Button from 'app/components/Button'
 import ExternalLink from 'app/components/ExternalLink'
-import Loader from 'app/components/Loader'
+import { RingLoader } from 'react-spinners'
 import HeadlessUiModal from 'app/components/Modal/HeadlessUIModal'
 import Typography from 'app/components/Typography'
 import { getExplorerLink } from 'app/functions'
@@ -39,13 +39,13 @@ export const ConfirmationPendingContent: FC<ConfirmationPendingContentProps> = (
             )}
           </Typography>
           <Typography variant="sm" className="break-words text-high-emphesis">
-            {sushiRelayChallenge ? sushiRelayChallenge : <Loader />}
+            {sushiRelayChallenge ? sushiRelayChallenge : <RingLoader />}
           </Typography>
         </HeadlessUiModal.BorderedContent>
       )}
       <HeadlessUiModal.BorderedContent className="flex flex-col items-center justify-center gap-1">
-        <div className="w-16 py-8 m-auto">
-          <Lottie animationData={loadingRollingCircle} autoplay loop />
+        <div className="py-8 m-auto">
+          <RingLoader color="pink" size={150} />
         </div>
         <Typography variant="lg" weight={700} className="text-white">
           {pendingText}

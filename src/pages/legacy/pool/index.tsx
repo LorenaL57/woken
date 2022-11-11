@@ -3,7 +3,7 @@ import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { CurrencyAmount } from '@sushiswap/core-sdk'
 import Button from 'app/components/Button'
-import Loader from 'app/components/Loader'
+import { RingLoader } from 'react-spinners'
 import FullPositionCard from 'app/components/PositionCard'
 import Typography from 'app/components/Typography'
 import Web3Connect from 'app/components/Web3Connect'
@@ -40,7 +40,7 @@ const Pool = () => {
             <div className="grid grid-flow-row divide-y divide-dark-800">
               {loading ? (
                 <div className="flex items-center justify-center h-40">
-                  <Loader />
+                  <RingLoader color="pink" size={150} />
                 </div>
               ) : pairs?.length > 0 ? (
                 pairs.map((v2Pair) => (

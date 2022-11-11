@@ -14,6 +14,8 @@ import logo from './logo.png'
 import Dots from '../Dots'
 import Typography from '../Typography'
 import { NavigationItem } from './NavigationItem'
+import NavLink from '../NavLink'
+import Link from 'next/link'
 
 const HEADER_HEIGHT = 64
 
@@ -31,18 +33,40 @@ const Desktop: FC = () => {
           <Container maxWidth="full" className="mx-auto">
             <div className="flex items-center justify-between gap-4 px-6">
               <div className="flex gap-4">
-                <div className="flex items-center w-6 mr-4">
+                <div className="relative flex" style={{ height: '60px' }}>
                   {/* <Image src={logo} alt="woken logo" style={{scale: 0.4}}/> */}
-                  <img src={require('./logo.png').default} alt="woken logo" style={{ scale: 0.4 }} />
+                  <img src={'https://i.imgur.com/gy3EGsY.png'} alt="woken logo" className="wokelogo" />
                 </div>
-                {menu.map((node) => {
+                {/* {menu.map((node) => {
                   return <NavigationItem node={node} key={node.key} />
-                })}
+                })} */}
+                <div className={`px-2 py-5 ${window.location.href.includes('swap') ? 'activenavlink' : 'passivelink'}`}>
+                  <Link href="/swap" className="">
+                    Swap
+                  </Link>
+                </div>
+                <div className={`px-2 py-5 ${window.location.href.includes('pool') ? 'activenavlink' : 'passivelink'}`}>
+                  <Link href="/pool" className="">
+                    Pool
+                  </Link>
+                </div>
+                <div
+                  className={`px-2 py-5 ${window.location.href.includes('about') ? 'activenavlink' : 'passivelink'}`}
+                >
+                  <Link href="/swap" className="">
+                    About
+                  </Link>
+                </div>
               </div>
 
               <div className="flex items-center justify-end w-auto shadow select-none whitespace-nowrap">
+                {library && (library.provider.isMetaMask || isCoinbaseWallet) && (
+                  <div className="hidden sm:inline-block">
+                    <Web3Network />
+                  </div>
+                )}
                 {account && chainId && (
-                  <Typography weight={700} variant="sm" className="px-2 py-5 font-bold">
+                  <Typography weight={700} variant="sm" className="px-2 py-5 font-bold balancetxt">
                     {userEthBalance ? (
                       `${userEthBalance?.toSignificant(4)} ${NATIVE[chainId].symbol}`
                     ) : (
@@ -50,13 +74,6 @@ const Desktop: FC = () => {
                     )}
                   </Typography>
                 )}
-
-                {library && (library.provider.isMetaMask || isCoinbaseWallet) && (
-                  <div className="hidden sm:inline-block">
-                    <Web3Network />
-                  </div>
-                )}
-
                 <Web3Status />
 
                 {/* <svg

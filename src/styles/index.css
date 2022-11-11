@@ -55,6 +55,53 @@ input:focus {
   outline: none;
 }
 
+.wokelogo {
+  scale: 0.6;
+}
+
+.activenavlink {
+  color: #FFFFFF;
+  font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+border-bottom: 2px solid white;
+height: 50px;
+}
+
+.passivelink {
+  color: #A6A0BB;
+}
+
+#web3-status-connected {
+  border-radius: 100px;
+  background: #1C1924;
+  padding: 10px;
+  height: 40px;
+}
+
+.balancetxt {
+  background: #2F2A3C;
+  border-radius: 100px;
+  height: 40px;
+  line-height: 0;
+  padding-right: 38px;
+  position: relative;
+  left: 32px;
+  z-index: -1;
+}
+
+#swap-button, #connect-wallet {
+  border-radius: 100px;
+}
+input, .web3button {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  background-size: 100%;
+  background-repeat: repeat;
+  background-image: linear-gradient(73.6deg, #FEC81B 2.11%, #EB21F1 97.96%);
+} 
 .striped-background {
   background: repeating-linear-gradient(45deg, #161522, #161522 10px, #0d0415 10px, #0d0415 20px);
 }

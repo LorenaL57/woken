@@ -1,4 +1,4 @@
-import { NETWORK_ICON } from 'app/config/networks'
+import { NETWORK_ICON, NETWORK_LABEL } from 'app/config/networks'
 import { switchToNetwork } from 'app/functions/network'
 import useIsWindowVisible from 'app/hooks/useIsWindowVisible'
 import usePrevious from 'app/hooks/usePrevious'
@@ -104,8 +104,14 @@ function Web3Network(): JSX.Element | null {
       className="flex items-center text-sm font-bold cursor-pointer pointer-events-auto select-none whitespace-nowrap"
       onClick={() => toggleNetworkModal()}
     >
-      <div className="grid items-center grid-flow-col justify-center h-[36px] w-[36px] text-sm rounded pointer-events-auto auto-cols-max text-secondary">
-        {/*@ts-ignore TYPE NEEDS FIXING*/}
+      <div
+        style={{ width: '100%', background: '#1C1924', borderRadius: 100, padding: 10 }}
+        className="grid items-center grid-flow-col justify-center h-[36px] w-[36px] text-sm rounded pointer-events-auto auto-cols-max text-secondary"
+      >
+        {/*@ts-ignore TYPE NEEDS FIXING
+        
+    */}
+        <span style={{ marginRight: 5, color: '#fff', fontWeight: '600' }}>{NETWORK_LABEL[chainId]}</span>
         <Image src={NETWORK_ICON[chainId]} alt="Switch Network" className="rounded-full" width="24px" height="24px" />
       </div>
       <NetworkModel

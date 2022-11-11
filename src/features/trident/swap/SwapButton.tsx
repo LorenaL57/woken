@@ -114,7 +114,6 @@ const SwapButton: FC<SwapButton> = ({ onClick, spendFromWallet = true }) => {
                 color={priceImpactSeverity > 2 && !error ? 'red' : 'gradient'}
                 disabled={disabled}
                 onClick={handleClick}
-                className="rounded-2xl md:rounded"
               >
                 {buttonText}
               </Button>
