@@ -22,22 +22,29 @@ const Pool = () => {
   return (
     <>
       <NextSeo title="Pool" />
-      <div className="flex items-center justify-between">
-        <Typography variant="lg" className="py-6">
-          Position Overview
+      <div>
+        <Typography variant="lg" className="font-bold text-white">
+          Liquidity provider rewards
         </Typography>
-        <Link href="/add" passHref={true}>
-          <Button size="sm" startIcon={<PlusIcon width={14} height={14} />}>
-            New Position
-          </Button>
-        </Link>
+        <Typography variant="sm" className="py-6 font-bold" style={{ color: '#A6A0BB' }}>
+          Liquidity providers earn a 0.3% fee on all trades proportional to their share of the pool. Fees are added to
+          the pool, accrue in real time and can be claimed by withdrawing your liquidity.
+        </Typography>
+        <div className="flex items-center justify-between">
+          <Typography variant="lg" className="py-6 text-white" style={{ fontWeight: 700 }}>
+            Your liquidity
+          </Typography>
+          <Link href="/add" passHref={true}>
+            <Button size="sm">Add liquidity</Button>
+          </Link>
+        </div>
       </div>
       <SwapLayoutCard className="!bg-dark-900 border border-dark-800 !p-0 overflow-hidden">
         {!account ? (
           <Web3Connect className="w-full !bg-dark-900 bg-gradient-to-r from-pink/80 hover:from-pink to-purple/80 hover:to-purple text-white h-[38px]" />
         ) : (
-          <div className="px-2 space-y-4 rounded bg-dark-900">
-            <div className="grid grid-flow-row divide-y divide-dark-800">
+          <div className="px-2 space-y-4" style={{ background: '#131118', borderRadius: 8 }}>
+            <div className="grid grid-flow-row divide-y" style={{ background: '#131118' }}>
               {loading ? (
                 <div className="flex items-center justify-center h-40">
                   <RingLoader color="pink" size={150} />
@@ -59,11 +66,6 @@ const Pool = () => {
           </div>
         )}
       </SwapLayoutCard>
-      <Typography variant="xs" className="px-10 mt-5 text-center text-low-emphesis">
-        {i18n._(t`Liquidity providers earn a 0.25% fee on all trades proportional to their share of
-                        the pool. Fees are added to the pool, accrue in real time and can be claimed by
-                        withdrawing your liquidity`)}
-      </Typography>
     </>
   )
 }

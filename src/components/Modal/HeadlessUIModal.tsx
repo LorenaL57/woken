@@ -148,7 +148,7 @@ const HeadlessUiModalControlled: FC<ControlledModalProps> = ({
                 isDesktop ? `w-full` : 'w-[85vw] max-h-[85vh] overflow-y-auto mx-auto',
                 'inline-block align-bottom rounded-xl text-left overflow-hidden transform p-4'
               )}
-              style={{ background: '#1C1924' }}
+              style={{ background: '#131118' }}
             >
               {children}
             </div>

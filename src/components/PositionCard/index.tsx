@@ -113,10 +113,8 @@ const FullPositionCard: FC<PositionCardProps> = ({ pair, stakedBalance }) => {
     <Disclosure as="div" className="py-2">
       {({ open }) => (
         <div
-          className={classNames(
-            open ? 'bg-dark-900' : 'hover:bg-dark-800',
-            'shadow-inner flex flex-col rounded-2xl gap-2 py-2 pl-1 pr-2 transition'
-          )}
+          className={classNames('shadow-inner flex flex-col rounded-2xl gap-2 py-2 pl-1 pr-2 transition')}
+          style={{ background: '#131118' }}
         >
           <Disclosure.Button as={Fragment}>
             <div className="flex justify-between gap-2 items-center pl-2 cursor-pointer">
@@ -130,6 +128,7 @@ const FullPositionCard: FC<PositionCardProps> = ({ pair, stakedBalance }) => {
                 <ChevronDownIcon
                   width={20}
                   className={classNames(open ? 'transform rotate-180' : '', 'transition hover:text-white')}
+                  style={{ color: '#FEC81B' }}
                 />
               </div>
             </div>
@@ -146,37 +145,61 @@ const FullPositionCard: FC<PositionCardProps> = ({ pair, stakedBalance }) => {
                 {[token0Deposited, token1Deposited].map((cur, index) => (
                   <ListPanel.CurrencyAmountItem amount={cur} key={index} size="xs" className="!px-0 !py-1" />
                 ))}
+                <div className="flex items-center mb-1 justify-between">
+                  <Typography variant="xs" className="text-low-emphesis">
+                    {i18n._(t`Pool share`)}{' '}
+                  </Typography>
+                  <Typography variant="xs" className="text-low-emphesis">
+                    {poolTokenPercentage
+                      ? (poolTokenPercentage.toFixed(2) === '0.00' ? '<0.01' : poolTokenPercentage.toFixed(2)) + '%'
+                      : '-'}
+                  </Typography>
+                </div>
                 {userDefaultPoolBalance && JSBI.greaterThan(userDefaultPoolBalance.quotient, BIG_INT_ZERO) && (
                   <div className="flex justify-between border-t border-dark-800 pt-3 mt-3">
-                    <div className="flex items-center mb-1">
-                      <Typography variant="xs" className="text-low-emphesis">
-                        {i18n._(t`Pool share`)}{' '}
-                        {poolTokenPercentage
-                          ? (poolTokenPercentage.toFixed(2) === '0.00' ? '<0.01' : poolTokenPercentage.toFixed(2)) + '%'
-                          : '-'}
-                      </Typography>
-                    </div>
-                    <div className="flex gap-4">
-                      <Button
-                        size="xs"
-                        variant="empty"
-                        color="blue"
-                        onClick={() => {
-                          router.push(`/remove/${currencyId(currency0)}/${currencyId(currency1)}`)
+                    <div className="flex gap-4 justify-between w-full">
+                      <div
+                        style={{
+                          background: '#1C1924',
+                          borderRadius: 100,
+                          width: '50%',
+                          display: 'flex',
+                          justifyContent: 'center',
+                          height: 40,
                         }}
                       >
-                        {i18n._(t`Remove`)}
-                      </Button>
-                      <Button
-                        startIcon={<PlusIcon width={14} height={14} />}
-                        size="xs"
-                        color="blue"
-                        onClick={() => {
-                          router.push(`/add/${currencyId(currency0)}/${currencyId(currency1)}`)
+                        <Button
+                          size="lg"
+                          className="web3button"
+                          onClick={() => {
+                            router.push(`/remove/${currencyId(currency0)}/${currencyId(currency1)}`)
+                          }}
+                          style={{ height: 40 }}
+                        >
+                          {i18n._(t`Remove`)}
+                        </Button>
+                      </div>
+                      <div
+                        style={{
+                          background: '#1C1924',
+                          borderRadius: 100,
+                          width: '50%',
+                          display: 'flex',
+                          justifyContent: 'center',
+                          height: 40,
                         }}
                       >
-                        {i18n._(t`Add`)}
-                      </Button>
+                        <Button
+                          className="web3button"
+                          size="lg"
+                          onClick={() => {
+                            router.push(`/add/${currencyId(currency0)}/${currencyId(currency1)}`)
+                          }}
+                          style={{ height: 40 }}
+                        >
+                          {i18n._(t`Add`)}
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 )}

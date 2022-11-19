@@ -1,6 +1,7 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { TransactionResponse } from '@ethersproject/providers'
 import { ArrowLeftIcon, PlusIcon } from '@heroicons/react/solid'
+import { ArrowDownIcon } from '@heroicons/react/outline'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { Currency, currencyEquals, WNATIVE } from '@sushiswap/core-sdk'
@@ -184,7 +185,7 @@ export default function Add() {
   const ModalHeader = noLiquidity ? (
     <div className="pb-4">
       <div className="flex items-center justify-start gap-3">
-        <div className="text-2xl font-bold text-high-emphesis">
+        <div className="text-sm font-bold text-high-emphesis">
           {currencies[Field.CURRENCY_A]?.symbol + '/' + currencies[Field.CURRENCY_B]?.symbol}
         </div>
         {/*@ts-ignore TYPE NEEDS FIXING*/}
@@ -200,11 +201,11 @@ export default function Add() {
           <DoubleCurrencyLogo currency0={currencyA} currency1={currencyB} size={48} />
         </div>
       </div>
-      <div className="text-lg font-medium md:text-2xl text-high-emphesis">
+      <div className="text-sm font-semibold text-high-emphesis mt-3">
         {currencies[Field.CURRENCY_A]?.symbol}/{currencies[Field.CURRENCY_B]?.symbol}
         &nbsp;{i18n._(t`Pool Tokens`)}
       </div>
-      <div className="pt-3 text-xs italic text-secondary">
+      <div className="pt-3 text-xs text-secondary" style={{ color: '#A6A0BB' }}>
         {i18n._(t`Output is estimated. If the price changes by more than ${allowedSlippage.toSignificant(
           4
         )}% your transaction
@@ -311,7 +312,7 @@ export default function Add() {
         </div>
         <div className="z-0 flex justify-center -mt-6 -mb-6">
           <div className="p-1.5 rounded-full bg-dark-800 border shadow-md border-dark-700 hover:border-dark-600">
-            <PlusIcon width={14} className="text-high-emphesis hover:text-white" />
+            <ArrowDownIcon width={14} className="text-high-emphesis hover:text-white" />
           </div>
         </div>
         <SwapAssetPanel
@@ -347,6 +348,7 @@ export default function Add() {
                 onClick={approveACallback}
                 disabled={approvalA === ApprovalState.PENDING}
                 className="rounded-2xl md:rounded"
+                style={{ borderRadius: '100px' }}
               >
                 {i18n._(t`Approve ${currencies[Field.CURRENCY_A]?.symbol}`)}
               </Button>
@@ -358,6 +360,7 @@ export default function Add() {
                 onClick={approveBCallback}
                 disabled={approvalB === ApprovalState.PENDING}
                 className="rounded-2xl md:rounded"
+                style={{ borderRadius: '100px' }}
               >
                 {i18n._(t`Approve ${currencies[Field.CURRENCY_B]?.symbol}`)}
               </Button>
@@ -370,6 +373,7 @@ export default function Add() {
               }}
               disabled={!isValid || approvalA !== ApprovalState.APPROVED || approvalB !== ApprovalState.APPROVED}
               className="rounded-2xl md:rounded"
+              style={{ borderRadius: '100px' }}
             >
               {error ?? i18n._(t`Add Liquidity`)}
             </Button>

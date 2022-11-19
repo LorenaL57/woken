@@ -91,13 +91,14 @@ export const TransactionSubmittedContent: FC<TransactionSubmittedContentProps> =
       <HeadlessUiModal.Header header={i18n._(t`Transaction submitted`)} onClose={onDismiss} />
       <HeadlessUiModal.BorderedContent className="flex flex-col items-center justify-center gap-1">
         <div className="w-[102px] h-[102px] bg-dark-900 rounded-full">
-          <Lottie animationData={receiptPrinting} autoplay loop={false} />
+          {/* <Lottie animationData={receiptPrinting} autoplay loop={false} /> */}
+          <img src="https://i.imgur.com/xMRzsnG.png" alt="" />
         </div>
         <Typography id="text-transaction-submitted" variant="sm" weight={700} className="text-white">
           {i18n._(t`Transaction Submitted`)}
         </Typography>
         {chainId && hash && (
-          <ExternalLink href={getExplorerLink(chainId, hash, 'transaction')}>
+          <ExternalLink href={getExplorerLink(chainId, hash, 'transaction')} className="web3button">
             <Typography variant="xs" weight={700} className="outline-none text-blue">
               {i18n._(t`View on explorer`)}
             </Typography>
@@ -106,7 +107,7 @@ export const TransactionSubmittedContent: FC<TransactionSubmittedContentProps> =
       </HeadlessUiModal.BorderedContent>
 
       {currencyToAdd && isAddTokenSupported && (
-        <Button color="blue" onClick={!success ? addToken : onDismiss}>
+        <Button color="blue" onClick={!success ? addToken : onDismiss} style={{ borderRadius: '100px' }}>
           <Typography variant="sm" weight={700}>
             {!success ? i18n._(t`Add ${currencyToAdd.symbol} to ${providerDisplayName}`) : i18n._(t`Dismiss`)}
           </Typography>

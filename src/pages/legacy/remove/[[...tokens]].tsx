@@ -270,7 +270,7 @@ export default function Remove() {
           <div className="ml-3 text-2xl font-medium text-high-emphesis">{currencyB?.symbol}</div>
         </div>
       </div>
-      <div className="justify-start text-sm text-secondary">
+      <div className="justify-start text-sm" style={{ color: '#A6A0BB' }}>
         {t`Output is estimated. If the price changes by more than ${allowedSlippage.toSignificant(
           4
         )}% your transaction will revert.`}
@@ -279,7 +279,7 @@ export default function Remove() {
   )
 
   const ModalBottom = (
-    <div className="p-6 mt-0 -m-6 bg-dark-800">
+    <div className="p-6 mt-0 -m-6">
       {pair && (
         <>
           <div className="grid gap-1">
@@ -304,7 +304,7 @@ export default function Remove() {
       )}
       <div className="grid gap-1 pb-6">
         <div className="flex items-center justify-between">
-          <div className="text-sm text-secondary">{i18n._(t`${currencyA?.symbol}/${currencyB?.symbol} Burned`)}</div>
+          <div className="text-sm ">{i18n._(t`${currencyA?.symbol}/${currencyB?.symbol} Burned`)}</div>
           <div className="text-sm font-bold justify-center items-center flex right-align pl-1.5 text-high-emphasis">
             {parsedAmounts[Field.LIQUIDITY]?.toSignificant(6)}
           </div>
@@ -313,6 +313,8 @@ export default function Remove() {
       <Button
         color="gradient"
         size="lg"
+        fullWidth
+        style={{ borderRadius: '100px' }}
         disabled={!(approval === ApprovalState.APPROVED || signatureData !== null)}
         onClick={onRemove}
       >
@@ -394,14 +396,14 @@ export default function Remove() {
         <div className="flex flex-col gap-3">
           <div
             className={classNames(
-              inputError ? 'border-red/40 hover:border-red' : 'border-dark-700 hover:border-dark-600',
-              'flex flex-col gap-1 bg-dark-900 px-4 py-2 rounded border'
+              inputError ? 'border-red/40 hover:border-red' : ' ',
+              'flex flex-col gap-1  px-4 py-2'
             )}
           >
             <Typography variant="sm" weight={700}>
               {i18n._(t`Percent to remove`)}
             </Typography>
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1" style={{ width: '10%', margin: 'auto' }}>
               <Typography
                 weight={700}
                 variant="lg"
@@ -416,9 +418,43 @@ export default function Remove() {
                 />
               </Typography>
             </div>
+            <div className="flex justify-between">
+              <div
+                className="percentagebtn"
+                onClick={() => {
+                  setInnerLiquidityPercentage('25')
+                }}
+              >
+                <span>25%</span>
+              </div>
+              <div
+                className="percentagebtn"
+                onClick={() => {
+                  setInnerLiquidityPercentage('50')
+                }}
+              >
+                <span>50%</span>
+              </div>
+              <div
+                className="percentagebtn"
+                onClick={() => {
+                  setInnerLiquidityPercentage('75')
+                }}
+              >
+                <span>75%</span>
+              </div>
+              <div
+                className="percentagebtn"
+                onClick={() => {
+                  setInnerLiquidityPercentage('100')
+                }}
+              >
+                <span>Max</span>
+              </div>
+            </div>
           </div>
-          <div className="flex-col overflow-hidden border rounded bg-dark-900 border-dark-700">
-            <div className="flex items-center justify-between px-4 py-2 overflow-hidden bg-dark-900">
+          <div className="flex-col overflow-hidden">
+            <div className="flex items-center justify-between px-4 py-2 overflow-hidden">
               <Typography variant="sm" weight={700} className="text-high-emphesis">
                 {i18n._(t`You'll receive`)}
               </Typography>
@@ -457,19 +493,20 @@ export default function Remove() {
           {!account ? (
             <Web3Connect size="lg" color="blue" className="w-full" />
           ) : (
-            <div className="flex flex-col gap-3">
+            <div className="flex gap-3 justify-between">
               <Button
-                fullWidth
                 loading={approval === ApprovalState.PENDING}
                 onClick={onAttemptToApprove}
+                className="web3button"
                 disabled={approval !== ApprovalState.NOT_APPROVED || signatureData !== null}
+                style={{ width: '50%' }}
               >
                 {approval === ApprovalState.APPROVED || signatureData !== null
                   ? i18n._(t`Approved`)
                   : i18n._(t`Approve`)}
               </Button>
               <Button
-                fullWidth
+                style={{ borderRadius: 100, width: '50%' }}
                 color={
                   !isValid && !!parsedAmounts[Field.CURRENCY_A] && !!parsedAmounts[Field.CURRENCY_B] ? 'red' : 'blue'
                 }

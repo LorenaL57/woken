@@ -13,9 +13,9 @@ import { TransactionDetails } from 'app/state/transactions/reducer'
 import Image from 'next/image'
 import React, { useMemo } from 'react'
 import { useWeb3React } from 'web3-react-core'
-import { RingLoader } from 'react-spinners'
 import Typography from '../Typography'
 import Web3Connect from '../Web3Connect'
+import Loader from 'app/components/Loader'
 
 // we want the latest one to come first, so return negative if a is after b
 function newTransactionsFirst(a: TransactionDetails, b: TransactionDetails) {
@@ -53,7 +53,7 @@ function Web3StatusInner() {
             <div>
               {pending?.length} {i18n._(t`Pending`)}
             </div>{' '}
-            <RingLoader color="pink" size={150} />
+            <Loader />
           </div>
         ) : (
           <div className="relative flex items-center gap-2 cursor-pointer pointer-events-auto">

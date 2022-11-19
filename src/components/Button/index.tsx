@@ -24,7 +24,7 @@ const SIZE = {
 
 const FILLED = {
   default:
-    'text-higher-emphesis hover:bg-gradient-to-b hover:from-black/20 focus:to-black/20 focus:bg-gradient-to-b focus:from-black/20 hover:to-black/20 active:bg-gradient-to-b active:from-black/40 active:to-black/40 disabled:pointer-events-none disabled:opacity-40',
+    'text-higher-emphesis hover:bg-gradient-to-b focus:bg-gradient-to-b  active:bg-gradient-to-b active:from-black/40 active:to-black/40 disabled:pointer-events-none disabled:opacity-40',
   blue: 'bg-gradient-to-r from-yellow-500 to-pink-600',
   red: 'bg-red',
   pink: 'bg-pink',
