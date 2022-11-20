@@ -329,7 +329,6 @@ export default function Add() {
             price={price}
             noLiquidity={noLiquidity}
             poolTokenPercentage={poolTokenPercentage}
-            className="bg-dark-900"
           />
         )}
 

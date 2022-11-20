@@ -24,7 +24,7 @@ const LiquidityPrice: FC<LiquidityPriceProps> = ({
   const [inverted, setInverted] = useState(false)
 
   return (
-    <div className={classNames('flex flex-col gap-2 px-3 py-2 rounded border border-dark-700', className)}>
+    <div className={classNames('flex flex-col gap-2 px-3 py-2', className)}>
       <div className="flex justify-between gap-4">
         <Typography variant="xs">Rate</Typography>
         <div>
