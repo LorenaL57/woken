@@ -1,15 +1,15 @@
 const SEO = {
-  defaultTitle: 'Sushi',
-  titleTemplate: '%s | Sushi',
+  defaultTitle: 'Woken',
+  titleTemplate: '%s | Woken',
   description: 'Swap, yield, lend, borrow, leverage, limit, launch all on one community driven ecosystem',
   openGraph: {
     type: 'website',
-    url: 'https://app.sushi.com/',
-    site_name: 'Sushi',
+    url: 'https://app.woken.com/',
+    site_name: 'Woken',
   },
   twitter: {
-    handle: '@SushiSwap',
-    site: '@SushiSwap',
+    handle: '@Woken',
+    site: '@Woken',
     cardType: 'summary_large_image',
   },
 }

@@ -4,9 +4,9 @@ export const GOOGLE_ANALYTICS_TRACKING_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALY
 // @ts-ignore TYPE NEEDS FIXING
 export const pageview = (url) => {
   // @ts-ignore TYPE NEEDS FIXING
-  window.gtag('config', GOOGLE_ANALYTICS_TRACKING_ID, {
-    page_path: url,
-  })
+  // window.gtag('config', GOOGLE_ANALYTICS_TRACKING_ID, {
+  //   page_path: url,
+  // })
 }
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/events

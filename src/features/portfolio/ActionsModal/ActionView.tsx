@@ -36,7 +36,7 @@ const ActionView: FC<ActionViewProps> = ({ onClose }) => {
 
     if (currency?.isNative) return router.push('/swap')
 
-    return router.push(`/swap?inputCurrency=${currency?.wrapped.address}`)
+    return router.push(`/swap`)
   }, [chainId, currency?.isNative, currency?.wrapped.address, router])
   // ActiveModal.DEPOSIT
 
