@@ -16,6 +16,7 @@ import Typography from '../Typography'
 import { NavigationItem } from './NavigationItem'
 import NavLink from '../NavLink'
 import Link from 'next/link'
+import ExternalLink from '../ExternalLink'
 
 const HEADER_HEIGHT = 64
 
@@ -53,9 +54,9 @@ const Desktop: FC = () => {
                 <div
                   className={`px-2 py-5 ${window.location.href.includes('about') ? 'activenavlink' : 'passivelink'}`}
                 >
-                  <Link href="/swap" className="">
+                  <ExternalLink href="https://woken.exchange/" className="">
                     About
-                  </Link>
+                  </ExternalLink>
                 </div>
               </div>
 
