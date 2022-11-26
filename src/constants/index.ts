@@ -85,3 +85,8 @@ export const EIP_1559_ACTIVATION_BLOCK: { [chainId in ChainId]?: number } = {
 export const DEFAULT_TXN_DISMISS_MS = 25000
 
 export const IS_IN_IFRAME = typeof window !== 'undefined' && window.parent !== window
+
+export const ROUTER_ADDRESS = '0x9791100b57586269E86fd2e2aAfdfc1a1Dba4d5c'
+export const FACTORY_ADDRESS = '0xA23d01F3C75fAd49B431538Ea74b7CE473B0ff8a'
+export const GATEKEEPER_ADDRESS = '0xBdb93B3Af9ff6ef11942d1dAdda2e186EFd41Bd4'
+export const INIT_HASH_ADDRESS = '0x20e0ab397e3d769cba59eab656d9b852a1ae2c5ee827d72bfd766706bb47919c'

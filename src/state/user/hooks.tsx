@@ -7,7 +7,6 @@ import {
   CHAINLINK_ORACLE_ADDRESS,
   computePairAddress,
   Currency,
-  FACTORY_ADDRESS,
   KASHI_ADDRESS,
   Pair,
   Token,
@@ -21,7 +20,7 @@ import { AppState } from 'app/state'
 import { useAppDispatch, useAppSelector } from 'app/state/hooks'
 import { useCallback, useMemo } from 'react'
 import { useSelector } from 'react-redux'
-
+import { FACTORY_ADDRESS } from 'app/constants'
 import {
   addSerializedPair,
   addSerializedToken,

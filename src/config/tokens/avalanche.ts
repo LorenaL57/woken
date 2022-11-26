@@ -30,7 +30,7 @@ export const WETH = new Token(
   'WETH',
   'Wrapped Ether'
 )
-export const ICE = new Token(ChainId.AVALANCHE, '0x4e1581f01046efdd7a1a2cdb0f82cdd7f71f2e59', 18, 'ICE', 'Ice Token')
+export const ICE = new Token(ChainId.AVALANCHE, '0x4e1581f01046eFDd7a1a2CDB0F82cdd7F71F2E59', 18, 'ICE', 'Ice Token')
 export const MIM = new Token(
   ChainId.AVALANCHE,
   '0x130966628846BFd36ff31a822705796e8cb8C18D',
