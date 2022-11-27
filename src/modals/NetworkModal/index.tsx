@@ -102,6 +102,17 @@ export const SUPPORTED_NETWORKS: Record<
     rpcUrls: ['https://bsc-dataseed.binance.org'],
     blockExplorerUrls: ['https://bscscan.com'],
   },
+  [ChainId.BSC_TESTNET]: {
+    chainId: '0x61',
+    chainName: 'Binance Test Chain',
+    nativeCurrency: {
+      name: 'Binance Coin',
+      symbol: 'BNB',
+      decimals: 18,
+    },
+    rpcUrls: ['https://data-seed-prebsc-1-s1.binance.org:8545'],
+    blockExplorerUrls: ['https://explorer.binance.org/smart-testnet'],
+  },
   [ChainId.MATIC]: {
     chainId: '0x89',
     chainName: 'Matic',

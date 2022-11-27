@@ -34,8 +34,9 @@ import { useDefaultsFromURLSearch, useDerivedSwapInfo, useSwapActionHandlers, us
 import { useExpertModeManager, useUserSingleHopOnly } from 'app/state/user/hooks'
 import { NextSeo } from 'next-seo'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
-
 import { SwapProps } from '../../swap'
+import { useGatekeeper } from 'app/state/user/hooks'
+import TradingModal from '../../../modals/TradingModal/TradingModal'
 
 const Swap = ({ banners }: SwapProps) => {
   const { i18n } = useLingui()
@@ -166,12 +167,23 @@ const Swap = ({ banners }: SwapProps) => {
     // }
   }, [approveCallback])
   // }, [approveCallback, gatherPermitSignature, signatureState])
+  const { library } = useActiveWeb3React()
 
   // check if user has gone through approval process, used to show two step buttons, reset on token change
   const [approvalSubmitted, setApprovalSubmitted] = useState<boolean>(false)
+  const [tradeStatus, setTradeStatus] = useState<boolean>(false)
+
+  const gatekeeper = useGatekeeper(library, account)
+
+  const checkTrade = async () => {
+    await gatekeeper.functions.isTradingOpen().then((data) => {
+      setTradeStatus(data[0])
+    })
+  }
 
   // mark when a user has submitted an approval, reset onTokenSelection for input field
   useEffect(() => {
+    checkTrade()
     if (approvalState === ApprovalState.PENDING) {
       setApprovalSubmitted(true)
     }
@@ -517,6 +529,14 @@ const Swap = ({ banners }: SwapProps) => {
         </div>
       </SwapLayoutCard>
       <Banner banners={banners} />
+      {tradeStatus === false && (
+        <TradingModal
+          isModalOpen={!tradeStatus}
+          closeModal={() => {
+            setTradeStatus(true)
+          }}
+        />
+      )}
     </>
   )
 }

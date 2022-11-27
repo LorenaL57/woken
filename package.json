@@ -59,7 +59,6 @@
     "@builder.io/partytown": "^0.5.2",
     "@chainsafe/dappeteer": "2.4.1",
     "@clover-network/clover-connector": "^1.0.0",
-    
     "@davatar/react": "^1.9.0",
     "@ethereumjs/common": "^2.4.0",
     "@ethereumjs/tx": "^3.3.0",
@@ -251,6 +250,7 @@
     "showDetails": true
   },
   "dependencies": {
+    "react-countdown": "^2.3.5",
     "react-spinners": "^0.13.6"
   }
 }

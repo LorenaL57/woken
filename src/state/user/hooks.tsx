@@ -1,4 +1,4 @@
-import { defaultAbiCoder } from '@ethersproject/abi'
+import { defaultAbiCoder, Interface } from '@ethersproject/abi'
 import { getCreate2Address } from '@ethersproject/address'
 import { AddressZero } from '@ethersproject/constants'
 import { keccak256 } from '@ethersproject/solidity'
@@ -7,20 +7,21 @@ import {
   CHAINLINK_ORACLE_ADDRESS,
   computePairAddress,
   Currency,
+  getSigner,
   KASHI_ADDRESS,
   Pair,
   Token,
 } from '@sushiswap/core-sdk'
 import { CHAINLINK_PRICE_FEED_MAP } from 'app/config/oracles/chainlink'
 import { BASES_TO_TRACK_LIQUIDITY_FOR, PINNED_PAIRS } from 'app/config/routing'
-import { e10 } from 'app/functions'
+import { e10, getProviderOrSigner } from 'app/functions'
 import { useAllTokens } from 'app/hooks/Tokens'
 import { useActiveWeb3React } from 'app/services/web3'
 import { AppState } from 'app/state'
 import { useAppDispatch, useAppSelector } from 'app/state/hooks'
 import { useCallback, useMemo } from 'react'
 import { useSelector } from 'react-redux'
-import { FACTORY_ADDRESS } from 'app/constants'
+import { FACTORY_ADDRESS, GATEKEEPER_ADDRESS } from 'app/constants'
 import {
   addSerializedPair,
   addSerializedToken,
@@ -33,6 +34,8 @@ import {
   updateUserSingleHopOnly,
   updateUserUseSushiGuard,
 } from './actions'
+import { Contract } from '@ethersproject/contracts'
+import GATEKEEPER_ABI from '../../constants/abis/gatekeeper.json'
 
 function serializeToken(token: Token): SerializedToken {
   return {
@@ -160,6 +163,13 @@ export function useURLWarningVisible(): boolean {
 export function useURLWarningToggle(): () => void {
   const dispatch = useAppDispatch()
   return useCallback(() => dispatch(toggleURLWarning()), [dispatch])
+}
+
+export function useGatekeeper(library: any, account: any) {
+  const gatekeeperInterface = new Interface(GATEKEEPER_ABI)
+  const signer = getSigner(library, account)
+
+  return new Contract(GATEKEEPER_ADDRESS, gatekeeperInterface, signer)
 }
 
 /**

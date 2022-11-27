@@ -10,7 +10,7 @@ import { InjectedConnector } from 'web3-react-injected-connector'
 
 import RPC from './rpc'
 
-const supportedChainIds = [56]
+const supportedChainIds = [56, 97]
 
 // export const network = new NetworkConnector({
 //   defaultChainId: 1,
@@ -198,7 +198,7 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     connector: async () => {
       const BscConnector = (await import('@binance-chain/bsc-connector')).BscConnector
       return new BscConnector({
-        supportedChainIds: [56],
+        supportedChainIds: [56, 97],
       })
     },
     name: 'Binance',
