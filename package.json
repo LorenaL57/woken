@@ -2,7 +2,6 @@
   "name": "sushiswap-interface",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://LorenaL57.github.io/woken",
   "scripts": {
     "analyze": "ANALYZE=true yarn build && serve .next -n",
     "build": "yarn lingui && next build",
@@ -18,8 +17,6 @@
     "ngrok": "ngrok http 3000",
     "pre-commit": "lint-staged",
     "prepare": "husky install",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "prettier": "prettier --write 'src/**/*.{ts,tsx}'",
     "start": "next start",
     "test": "jest --modulePathIgnorePatterns=e2e",
