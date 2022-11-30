@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "analyze": "ANALYZE=true yarn build && serve .next -n",
-    "build": "yarn lingui && next build",
+    "build": "next build",
     "circular": "madge --circular src --extensions ts,tsx,js,jsx",
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "e2e": "concurrently -k -s first -n \"app,e2e\" \"yarn dev\" \"yarn e2e:safe\"",
@@ -205,6 +205,7 @@
     "react-virtualized": "^9.22.3",
     "react-virtualized-auto-sizer": "^1.0.5",
     "react-window": "^1.8.6",
+    "react-window-infinite-loader": "^1.0.7",
     "redux": "^4.1.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-persist": "^6.0.0",
