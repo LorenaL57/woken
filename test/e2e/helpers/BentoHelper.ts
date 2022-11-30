@@ -2,7 +2,7 @@ import { JsonRpcProvider } from '@ethersproject/providers'
 import { BENTOBOX_ADDRESS, ChainId } from '@sushiswap/core-sdk'
 import { Contract, Signer, utils, Wallet } from 'ethers'
 
-import { ADDRESSES } from '../constants/Index'
+import { ADDRESSES } from '../constants/index'
 
 export class BentoHelper {
   private Signer!: Signer
