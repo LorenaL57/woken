@@ -165,7 +165,7 @@ export function useURLWarningToggle(): () => void {
   return useCallback(() => dispatch(toggleURLWarning()), [dispatch])
 }
 
-export function useGatekeeper(library: any, account: any) {
+export function Gatekeeper(library: any, account: any) {
   const gatekeeperInterface = new Interface(GATEKEEPER_ABI)
   const signer = getSigner(library, account)
 

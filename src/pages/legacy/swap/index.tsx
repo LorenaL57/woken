@@ -35,8 +35,9 @@ import { useExpertModeManager, useUserSingleHopOnly } from 'app/state/user/hooks
 import { NextSeo } from 'next-seo'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { SwapProps } from '../../swap'
-import { useGatekeeper } from 'app/state/user/hooks'
+import { Gatekeeper } from 'app/state/user/hooks'
 import TradingModal from '../../../modals/TradingModal/TradingModal'
+import { HeadlessUiModal } from 'app/components/Modal'
 
 const Swap = ({ banners }: SwapProps) => {
   const { i18n } = useLingui()
@@ -173,17 +174,28 @@ const Swap = ({ banners }: SwapProps) => {
   const [approvalSubmitted, setApprovalSubmitted] = useState<boolean>(false)
   const [tradeStatus, setTradeStatus] = useState<boolean>(false)
 
-  const gatekeeper = useGatekeeper(library, account)
+  let gatekeeper: any
+  if (account && library) {
+    gatekeeper = Gatekeeper(library, account)
+  }
 
   const checkTrade = async () => {
-    await gatekeeper.functions.isTradingOpen().then((data) => {
-      setTradeStatus(data[0])
-    })
+    if (gatekeeper) {
+      await gatekeeper.functions.isTradingOpen().then((data: any) => {
+        setTradeStatus(data[0])
+      })
+    } else setTradeStatus(false)
   }
+
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      checkTrade()
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [tradeStatus])
 
   // mark when a user has submitted an approval, reset onTokenSelection for input field
   useEffect(() => {
-    checkTrade()
     if (approvalState === ApprovalState.PENDING) {
       setApprovalSubmitted(true)
     }
@@ -355,6 +367,34 @@ const Swap = ({ banners }: SwapProps) => {
   return (
     <>
       <NextSeo title="Swap" />
+      {tradeStatus === true && (
+        <div
+          className="flex flex-col gap-3 p-2 pt-4 shadow-md md:p-4 shadow-dark-1000"
+          style={{ background: 'rgb(19, 17, 24)', borderRadius: 8, marginBottom: '2rem' }}
+        >
+          <Button
+            onClick={() => {}}
+            style={{ background: '#9DE7BD', fontSize: 16, fontWeight: 600, pointerEvents: 'none', width: '100%' }}
+          >
+            {i18n._(t`MARKET IS OPEN`)}
+          </Button>
+
+          <p
+            className="web3button"
+            style={{
+              textAlign: 'center',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 10,
+              padding: '20px 0 0 20px',
+            }}
+          >
+            <img src="https://i.imgur.com/8ESvmxo.png" alt="" style={{ width: 20, height: 20 }} />
+            Community vote market
+          </p>
+        </div>
+      )}
       <ConfirmSwapModal
         isOpen={showConfirm}
         trade={trade}
@@ -533,7 +573,7 @@ const Swap = ({ banners }: SwapProps) => {
         <TradingModal
           isModalOpen={!tradeStatus}
           closeModal={() => {
-            setTradeStatus(true)
+            // setTradeStatus(true)
           }}
         />
       )}
