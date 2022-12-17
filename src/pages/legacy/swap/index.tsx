@@ -575,6 +575,7 @@ const Swap = ({ banners }: SwapProps) => {
           closeModal={() => {
             // setTradeStatus(true)
           }}
+          checkStatus={tradeStatus}
         />
       )}
     </>

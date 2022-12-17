@@ -6,7 +6,7 @@ import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
 import dist from '@davatar/react'
 
-const TradingModal = ({ isModalOpen, closeModal }) => {
+const TradingModal = ({ isModalOpen, closeModal, checkStatus }) => {
   const { i18n } = useLingui()
 
   // Set the date we're counting down to
@@ -51,7 +51,7 @@ const TradingModal = ({ isModalOpen, closeModal }) => {
   const body = document.querySelector('body')
 
   const showModal = function (e) {
-    if (duration > 0) {
+    if (checkStatus === false) {
       // Disable scroll
       body.style.pointerEvents = 'none'
     } else {
@@ -62,7 +62,7 @@ const TradingModal = ({ isModalOpen, closeModal }) => {
 
   useEffect(() => {
     showModal()
-  }, [duration])
+  }, [checkStatus])
 
   return (
     <HeadlessUiModal.Controlled isOpen={isModalOpen} onDismiss={() => {}} maxWidth="md">
