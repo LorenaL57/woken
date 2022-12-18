@@ -187,9 +187,23 @@ const Swap = ({ banners }: SwapProps) => {
     } else setTradeStatus(false)
   }
 
+  const showModal = function () {
+    const body = document.querySelector('body')
+    if (body) {
+      if (tradeStatus === false) {
+        // Disable scroll
+        body.style.pointerEvents = 'none'
+      } else {
+        // Enable scroll
+        body.style.pointerEvents = 'auto'
+      }
+    }
+  }
+
   useEffect(() => {
     const interval = setInterval(async () => {
       checkTrade()
+      showModal()
     }, 1000)
     return () => clearInterval(interval)
   }, [tradeStatus])

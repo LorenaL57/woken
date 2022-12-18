@@ -47,23 +47,6 @@ const TradingModal = ({ isModalOpen, closeModal, checkStatus }) => {
     }
   }, 1000)
 
-  //   const modal = document.querySelector("#tymodal");
-  const body = document.querySelector('body')
-
-  const showModal = function (e) {
-    if (checkStatus === false) {
-      // Disable scroll
-      body.style.pointerEvents = 'none'
-    } else {
-      // Enable scroll
-      body.style.pointerEvents = 'auto'
-    }
-  }
-
-  useEffect(() => {
-    showModal()
-  }, [checkStatus])
-
   return (
     <HeadlessUiModal.Controlled isOpen={isModalOpen} onDismiss={() => {}} maxWidth="md">
       <div className="flex flex-col gap-4">
